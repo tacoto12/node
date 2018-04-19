@@ -198,6 +198,28 @@ undefined
 undefined
 ```
 
+#### Top level `let` and `const`
+
+By using the `--no-top-level-const` command line option, it is possible to
+reassign any top level variable that was declared with `let` and `const`.
+Internally the variable will be declared with `var` instead.
+
+<!-- eslint-disable no-redeclare -->
+```js
+const a = 5;
+console.log(a);
+// 5
+
+{
+  const a = 'This is not the top level';
+  // TypeError: Assignment to constant variable.
+}
+
+const a = 6;
+console.log(a);
+// 6
+```
+
 ### Custom Evaluation Functions
 
 When a new `repl.REPLServer` is created, a custom evaluation function may be

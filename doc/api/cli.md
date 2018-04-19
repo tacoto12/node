@@ -155,7 +155,6 @@ added: v0.8.0
 
 Silence deprecation warnings.
 
-
 ### `--no-force-async-hooks-checks`
 <!-- YAML
 added: v9.0.0
@@ -164,6 +163,29 @@ added: v9.0.0
 Disables runtime checks for `async_hooks`. These will still be enabled
 dynamically when `async_hooks` is enabled.
 
+### `--no-top-level-const`
+<!-- YAML
+added: REPLACEME
+-->
+
+Rewrite top level `const` and `let` in the REPL internally to `var` to
+make sure it is possible to override the variable again.
+
+<!-- eslint-disable no-redeclare -->
+```js
+const a = 5;
+console.log(a);
+// 5
+
+{
+  const a = 'This is not the top level';
+  // TypeError: Assignment to constant variable.
+}
+
+const a = 6;
+console.log(a);
+// 6
+```
 
 ### `--no-warnings`
 <!-- YAML
@@ -171,7 +193,6 @@ added: v6.0.0
 -->
 
 Silence all process warnings (including deprecations).
-
 
 ### `--openssl-config=file`
 <!-- YAML

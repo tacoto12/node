@@ -132,6 +132,10 @@ Silence deprecation warnings.
 Disable runtime checks for `async_hooks`.
 These will still be enabled dynamically when `async_hooks` is enabled.
 .
+.It Fl -no-top-level-const
+Rewrite top level `const` and `let` in the REPL internally to `var` to
+make sure it is possible to override the variable again.
+.
 .It Fl -no-warnings
 Silence all process warnings (including deprecations).
 .

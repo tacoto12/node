@@ -43,7 +43,7 @@ tmpdir.refresh();
 }
 
 {
-  const stream = fs.createWriteStream(file);
+  const stream = new fs.WriteStream(file);
 
   stream.on('drain', function() {
     assert.fail('\'drain\' event must not be emitted before ' +

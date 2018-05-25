@@ -154,7 +154,7 @@ common.expectsError(
   });
 
 {
-  const stream = fs.createReadStream(rangeFile, { start: 0, end: 0 });
+  const stream = new fs.ReadStream(rangeFile, { start: 0, end: 0 });
   stream.data = '';
 
   stream.on('data', function(chunk) {
@@ -168,7 +168,7 @@ common.expectsError(
 
 {
   // Verify that end works when start is not specified.
-  const stream = new fs.createReadStream(rangeFile, { end: 1 });
+  const stream = new fs.ReadStream(rangeFile, { end: 1 });
   stream.data = '';
 
   stream.on('data', function(chunk) {
@@ -189,7 +189,7 @@ if (!common.isWindows) {
   const mkfifoResult = child_process.spawnSync('mkfifo', [filename]);
   if (!mkfifoResult.error) {
     child_process.exec(`echo "xyz foobar" > '${filename}'`);
-    const stream = new fs.createReadStream(filename, { end: 1 });
+    const stream = fs.createReadStream(filename, { end: 1 });
     stream.data = '';
 
     stream.on('data', function(chunk) {

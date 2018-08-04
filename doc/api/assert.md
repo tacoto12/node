@@ -142,13 +142,7 @@ const assert = require('assert');
 
 It is recommended to use the [`strict mode`][] instead as the
 [Abstract Equality Comparison][] can often have surprising results. This is
-especially true for [`assert.deepEqual()`][], where the comparison rules are
-lax:
-
-```js
-// WARNING: This does not throw an AssertionError!
-assert.deepEqual(/a/gi, new Date());
-```
+especially true for [`assert.deepEqual()`][].
 
 ## assert(value[, message])
 <!-- YAML
@@ -163,6 +157,9 @@ An alias of [`assert.ok()`][].
 <!-- YAML
 added: v0.1.21
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/REPLACEME
+    description: The comparison now also compares the prototype and similar.
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: The `Error` names and messages are now properly compared
@@ -196,20 +193,16 @@ Primitive values are compared with the [Abstract Equality Comparison][]
 ( `==` ).
 
 Only [enumerable "own" properties][] are considered. The
-[`assert.deepEqual()`][] implementation does not test the
-[`[[Prototype]]`][prototype-spec] of objects or enumerable own [`Symbol`][]
-properties. For such checks, consider using [`assert.deepStrictEqual()`][]
-instead. [`assert.deepEqual()`][] can have potentially surprising results. The
-following example does not throw an `AssertionError` because the properties on
-the [`RegExp`][] object are not enumerable:
+[`assert.deepEqual()`][] implementation does not test enumerable own
+[`Symbol`][] properties. For such checks, consider using
+[`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have
+potentially surprising results. The following example does not throw an
+`AssertionError` because the keys on the [`Map`][] are loosely equal:
 
 ```js
 // WARNING: This does not throw an AssertionError!
-assert.deepEqual(/a/gi, new Date());
+assert.deepEqual(new Map([[1, 1]]), new Map([[true, '1']]));
 ```
-
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their
-contained items compared too, as expected.
 
 "Deep" equality means that the enumerable "own" properties of child objects
 are evaluated also:

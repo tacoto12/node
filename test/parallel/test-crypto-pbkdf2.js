@@ -61,7 +61,7 @@ assert.throws(
   () => crypto.pbkdf2('password', 'salt', 1, 20, null),
   {
     code: 'ERR_INVALID_CALLBACK',
-    name: 'TypeError [ERR_INVALID_CALLBACK]'
+    name: 'TypeError'
   }
 );
 
@@ -69,7 +69,7 @@ assert.throws(
   () => crypto.pbkdf2Sync('password', 'salt', -1, 20, null),
   {
     code: 'ERR_OUT_OF_RANGE',
-    name: 'RangeError [ERR_OUT_OF_RANGE]',
+    name: 'RangeError',
     message: 'The value of "iterations" is out of range. ' +
              'It must be >= 0 && <= 2147483647. Received -1'
   }
@@ -81,7 +81,7 @@ assert.throws(
       crypto.pbkdf2Sync('password', 'salt', 1, notNumber, 'sha256');
     }, {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: 'The "keylen" argument must be of type number. ' +
                `Received type ${typeof notNumber}`
     });
@@ -94,7 +94,7 @@ assert.throws(
                     common.mustNotCall());
     }, {
       code: 'ERR_OUT_OF_RANGE',
-      name: 'RangeError [ERR_OUT_OF_RANGE]',
+      name: 'RangeError',
       message: 'The value of "keylen" is out of range. It ' +
                `must be an integer. Received ${input}`
     });
@@ -107,7 +107,7 @@ assert.throws(
                     common.mustNotCall());
     }, {
       code: 'ERR_OUT_OF_RANGE',
-      name: 'RangeError [ERR_OUT_OF_RANGE]',
+      name: 'RangeError',
       message: 'The value of "keylen" is out of range. It ' +
                `must be >= 0 && <= 2147483647. Received ${input}`
     });
@@ -121,7 +121,7 @@ assert.throws(
   () => crypto.pbkdf2('password', 'salt', 8, 8, common.mustNotCall()),
   {
     code: 'ERR_INVALID_ARG_TYPE',
-    name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+    name: 'TypeError',
     message: 'The "digest" argument must be one of type string or null. ' +
              'Received type undefined'
   });
@@ -130,7 +130,7 @@ assert.throws(
   () => crypto.pbkdf2Sync('password', 'salt', 8, 8),
   {
     code: 'ERR_INVALID_ARG_TYPE',
-    name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+    name: 'TypeError',
     message: 'The "digest" argument must be one of type string or null. ' +
              'Received type undefined'
   });
@@ -142,7 +142,7 @@ assert.throws(
     () => crypto.pbkdf2(input, 'salt', 8, 8, 'sha256', common.mustNotCall()),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "password" argument must be one of type string, ${msgPart2}`
     }
   );
@@ -151,7 +151,7 @@ assert.throws(
     () => crypto.pbkdf2('pass', input, 8, 8, 'sha256', common.mustNotCall()),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "salt" argument must be one of type string, ${msgPart2}`
     }
   );
@@ -160,7 +160,7 @@ assert.throws(
     () => crypto.pbkdf2Sync(input, 'salt', 8, 8, 'sha256'),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "password" argument must be one of type string, ${msgPart2}`
     }
   );
@@ -169,7 +169,7 @@ assert.throws(
     () => crypto.pbkdf2Sync('pass', input, 8, 8, 'sha256'),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "salt" argument must be one of type string, ${msgPart2}`
     }
   );
@@ -181,7 +181,7 @@ assert.throws(
     () => crypto.pbkdf2('pass', 'salt', i, 8, 'sha256', common.mustNotCall()),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "iterations" argument must be of type number. ${received}`
     }
   );
@@ -190,7 +190,7 @@ assert.throws(
     () => crypto.pbkdf2Sync('pass', 'salt', i, 8, 'sha256'),
     {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: `The "iterations" argument must be of type number. ${received}`
     }
   );
@@ -223,7 +223,7 @@ assert.throws(
   () => crypto.pbkdf2('pass', 'salt', 8, 8, 'md55', common.mustNotCall()),
   {
     code: 'ERR_CRYPTO_INVALID_DIGEST',
-    name: 'TypeError [ERR_CRYPTO_INVALID_DIGEST]',
+    name: 'TypeError',
     message: 'Invalid digest: md55'
   }
 );
@@ -232,7 +232,7 @@ assert.throws(
   () => crypto.pbkdf2Sync('pass', 'salt', 8, 8, 'md55'),
   {
     code: 'ERR_CRYPTO_INVALID_DIGEST',
-    name: 'TypeError [ERR_CRYPTO_INVALID_DIGEST]',
+    name: 'TypeError',
     message: 'Invalid digest: md55'
   }
 );

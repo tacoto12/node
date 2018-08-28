@@ -40,7 +40,7 @@ process.setMaxListeners(256);
     [undefined, null, false, true, {}, []].forEach((value) => {
       const errObj = {
         code: 'ERR_INVALID_ARG_TYPE',
-        name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+        name: 'TypeError',
         message: 'The "size" argument must be of type number. ' +
                 `Received type ${typeof value}`
       };
@@ -51,7 +51,7 @@ process.setMaxListeners(256);
     [-1, NaN, 2 ** 32].forEach((value) => {
       const errObj = {
         code: 'ERR_OUT_OF_RANGE',
-        name: 'RangeError [ERR_OUT_OF_RANGE]',
+        name: 'RangeError',
         message: 'The value of "size" is out of range. It must be >= 0 && <= ' +
                  `${kMaxPossibleLength}. Received ${value}`
       };
@@ -195,7 +195,7 @@ process.setMaxListeners(256);
 
     const typeErrObj = {
       code: 'ERR_INVALID_ARG_TYPE',
-      name: 'TypeError [ERR_INVALID_ARG_TYPE]',
+      name: 'TypeError',
       message: 'The "offset" argument must be of type number. ' +
                'Received type string'
     };
@@ -218,7 +218,7 @@ process.setMaxListeners(256);
     [NaN, kMaxPossibleLength + 1, -10, (-1 >>> 0) + 1].forEach((offsetSize) => {
       const errObj = {
         code: 'ERR_OUT_OF_RANGE',
-        name: 'RangeError [ERR_OUT_OF_RANGE]',
+        name: 'RangeError',
         message: 'The value of "offset" is out of range. ' +
                  `It must be >= 0 && <= 10. Received ${offsetSize}`
       };
@@ -241,7 +241,7 @@ process.setMaxListeners(256);
 
     const rangeErrObj = {
       code: 'ERR_OUT_OF_RANGE',
-      name: 'RangeError [ERR_OUT_OF_RANGE]',
+      name: 'RangeError',
       message: 'The value of "size + offset" is out of range. ' +
                'It must be <= 10. Received 11'
     };
@@ -261,7 +261,7 @@ assert.throws(
   () => crypto.randomBytes((-1 >>> 0) + 1),
   {
     code: 'ERR_OUT_OF_RANGE',
-    name: 'RangeError [ERR_OUT_OF_RANGE]',
+    name: 'RangeError',
     message: 'The value of "size" is out of range. ' +
              `It must be >= 0 && <= ${kMaxPossibleLength}. Received 4294967296`
   }

@@ -29,7 +29,7 @@ const { ERR_TEST } = codes;
     () => { throw new ERR_TEST(ctx); },
     {
       code: 'ERR_TEST',
-      name: 'SystemError [ERR_TEST]',
+      name: 'SystemError',
       message: 'custom message: syscall_test returned ETEST (code message)' +
                ' /str => /str2',
       info: ctx
@@ -49,7 +49,7 @@ const { ERR_TEST } = codes;
     () => { throw new ERR_TEST(ctx); },
     {
       code: 'ERR_TEST',
-      name: 'SystemError [ERR_TEST]',
+      name: 'SystemError',
       message: 'custom message: syscall_test returned ETEST (code message)' +
                ' /buf => /str2',
       info: ctx
@@ -69,7 +69,7 @@ const { ERR_TEST } = codes;
     () => { throw new ERR_TEST(ctx); },
     {
       code: 'ERR_TEST',
-      name: 'SystemError [ERR_TEST]',
+      name: 'SystemError',
       message: 'custom message: syscall_test returned ETEST (code message)' +
                ' /buf => /buf2',
       info: ctx

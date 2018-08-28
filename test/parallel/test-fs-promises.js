@@ -126,7 +126,7 @@ function verifyStatObject(stat) {
       },
       {
         code: 'ERR_OUT_OF_RANGE',
-        name: 'RangeError [ERR_OUT_OF_RANGE]',
+        name: 'RangeError',
         message: 'The value of "gid" is out of range. ' +
                  'It must be >= 0 && < 4294967296. Received -1'
       });
@@ -137,7 +137,7 @@ function verifyStatObject(stat) {
       },
       {
         code: 'ERR_OUT_OF_RANGE',
-        name: 'RangeError [ERR_OUT_OF_RANGE]',
+        name: 'RangeError',
         message: 'The value of "gid" is out of range. ' +
                   'It must be >= 0 && < 4294967296. Received -1'
       });
@@ -256,7 +256,7 @@ function verifyStatObject(stat) {
       async () => mkdtemp(1),
       {
         code: 'ERR_INVALID_ARG_TYPE',
-        name: 'TypeError [ERR_INVALID_ARG_TYPE]'
+        name: 'TypeError'
       }
     );
 

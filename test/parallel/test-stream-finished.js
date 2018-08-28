@@ -129,21 +129,24 @@ const { promisify } = require('util');
   assert.throws(
     () => finished(rs, 'foo'),
     {
-      name: /ERR_INVALID_ARG_TYPE/,
+      name: 'TypeError',
+      code: 'ERR_INVALID_ARG_TYPE',
       message: /callback/
     }
   );
   assert.throws(
     () => finished(rs, 'foo', () => {}),
     {
-      name: /ERR_INVALID_ARG_TYPE/,
+      name: 'TypeError',
+      code: 'ERR_INVALID_ARG_TYPE',
       message: /opts/
     }
   );
   assert.throws(
     () => finished(rs, {}, 'foo'),
     {
-      name: /ERR_INVALID_ARG_TYPE/,
+      name: 'TypeError',
+      code: 'ERR_INVALID_ARG_TYPE',
       message: /callback/
     }
   );

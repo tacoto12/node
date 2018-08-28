@@ -283,7 +283,7 @@ const {
 ].forEach((name) => {
   common.expectsError({
     code: 'ERR_HTTP2_INVALID_CONNECTION_HEADERS',
-    name: 'TypeError [ERR_HTTP2_INVALID_CONNECTION_HEADERS]',
+    name: 'TypeError',
     message: 'HTTP/1 Connection specific headers are forbidden: ' +
              `"${name.toLowerCase()}"`
   })(mapToHeaders({ [name]: 'abc' }));
@@ -291,14 +291,14 @@ const {
 
 common.expectsError({
   code: 'ERR_HTTP2_INVALID_CONNECTION_HEADERS',
-  name: 'TypeError [ERR_HTTP2_INVALID_CONNECTION_HEADERS]',
+  name: 'TypeError',
   message: 'HTTP/1 Connection specific headers are forbidden: ' +
            `"${HTTP2_HEADER_TE}"`
 })(mapToHeaders({ [HTTP2_HEADER_TE]: ['abc'] }));
 
 common.expectsError({
   code: 'ERR_HTTP2_INVALID_CONNECTION_HEADERS',
-  name: 'TypeError [ERR_HTTP2_INVALID_CONNECTION_HEADERS]',
+  name: 'TypeError',
   message: 'HTTP/1 Connection specific headers are forbidden: ' +
            `"${HTTP2_HEADER_TE}"`
 })(mapToHeaders({ [HTTP2_HEADER_TE]: ['abc', 'trailers'] }));

@@ -75,7 +75,7 @@ assert.throws(() => Buffer.allocUnsafe(8).readFloatLE(-1), RangeError);
     assert.throws(
       () => buf[`read${fn}E`](0),
       {
-        name: 'RangeError [ERR_BUFFER_OUT_OF_BOUNDS]',
+        name: 'RangeError',
         message: 'Attempt to write outside buffer bounds'
       }
     );

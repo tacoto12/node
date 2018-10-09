@@ -601,6 +601,23 @@ assert.deepStrictEqual([ 1, 2, NaN, 4 ], [ 1, 2, NaN, 4 ]);
   assertNotDeepOrStrict(boxedString, Object('test'));
   boxedSymbol.slow = true;
   assertNotDeepOrStrict(boxedSymbol, {});
+
+  // Manipulated
+  Object.setPrototypeOf(boxedSymbol, Object.getPrototypeOf(boxedString));
+  Object.defineProperty(boxedSymbol, Symbol.toStringTag, {
+    value: 'String'
+  });
+  const emptyBoxedString = new String();
+  emptyBoxedString.slow = true;
+  assertOnlyDeepEqual(emptyBoxedString, boxedSymbol, assert.AssertionError);
+
+  const object = { 0: 't', 1: 'e', 2: 's', 3: 't', slow: true };
+  Object.setPrototypeOf(object, Object.getPrototypeOf(boxedString));
+  Object.defineProperties(object, {
+    [Symbol.toStringTag]: { value: 'String' },
+    valueOf: { value() { return 'test'; } }
+  });
+  assertOnlyDeepEqual(boxedString, object);
 }
 
 // Minus zero
@@ -927,4 +944,12 @@ assert.deepStrictEqual(obj1, obj2);
   const arr = [1, 2, 3];
   arr[2 ** 32] = true;
   assertNotDeepOrStrict(arr, [1, 2, 3]);
+}
+
+{
+  const a = new TypeError('foo');
+  Object.defineProperty(a, Symbol.toStringTag, { value: 'Foobar' });
+  const b = new TypeError('bar');
+  Object.defineProperty(b, Symbol.toStringTag, { value: 'Foobar' });
+  assertNotDeepOrStrict(a, b, assert.AssertionError);
 }

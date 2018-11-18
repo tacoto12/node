@@ -805,6 +805,10 @@ module.exports.foo();
 ## process.emitWarning(warning[, options])
 <!-- YAML
 added: v8.0.0
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/REPLACEME
+    description: `DeprecationWarning`s will from now on only be logged once.
 -->
 
 * `warning` {string|Error} The warning to emit.
@@ -851,6 +855,10 @@ If `warning` is passed as an `Error` object, the `options` argument is ignored.
 ## process.emitWarning(warning[, type[, code]][, ctor])
 <!-- YAML
 added: v6.0.0
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/REPLACEME
+    description: `DeprecationWarning`s will from now on only be logged once.
 -->
 
 * `warning` {string|Error} The warning to emit.
@@ -919,6 +927,7 @@ mechanism is **not** a replacement for normal error handling mechanisms.
 The following additional handling is implemented if the warning `type` is
 `'DeprecationWarning'`:
 
+* Each deprecation warning will only be logged once by default.
 * If the `--throw-deprecation` command-line flag is used, the deprecation
   warning is thrown as an exception rather than being emitted as an event.
 * If the `--no-deprecation` command-line flag is used, the deprecation

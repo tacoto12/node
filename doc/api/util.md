@@ -389,6 +389,10 @@ stream.write('With ES6');
 added: v0.3.0
 changes:
   - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/24971
+    description: Internal properties no longer appear in the context argument
+                 of a custom inspection function.
+  - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/25006
     description: ArrayBuffers now also show their binary contents.
   - version: v11.5.0

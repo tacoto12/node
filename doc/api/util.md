@@ -391,7 +391,8 @@ changes:
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/24971
     description: Internal properties no longer appear in the context argument
-                 of a custom inspection function.
+                 of a custom inspection function and can not be overridden
+                 anymore by providing them as `inspect` options.
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/25006
     description: ArrayBuffers now also show their binary contents.

@@ -791,7 +791,7 @@ util.inspect({ hasOwnProperty: null });
     }) };
   });
 
-  util.inspect(subject, { customInspectOptions: true });
+  util.inspect(subject);
 
   // util.inspect.custom is a shared symbol which can be accessed as
   // Symbol.for("nodejs.util.inspect.custom").
@@ -800,13 +800,18 @@ util.inspect({ hasOwnProperty: null });
   subject[inspect] = () => ({ baz: 'quux' });
 
   assert.strictEqual(util.inspect(subject), '{ baz: \'quux\' }');
-
-  subject[inspect] = (depth, opts) => {
-    assert.strictEqual(opts.customInspectOptions, true);
-  };
-
-  util.inspect(subject, { customInspectOptions: true });
 }
+
+// Invalid options throw.
+['unknown', 'seen', 'budget', 'indentationLvl'].forEach((key) => {
+  assert.throws(
+    () => util.inspect('foobar', { [key]: true }),
+    {
+      code: 'ERR_INVALID_OPT_KEY',
+      message: `"${key}" is an unknown options key`
+    }
+  );
+});
 
 {
   // Returning `this` from a custom inspection function works.

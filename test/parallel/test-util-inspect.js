@@ -1836,7 +1836,6 @@ assert.strictEqual(
     util.inspect(new StorageObject()),
     '<[Object: null prototype] {}> {}'
   );
-
 }
 
 // Check that the fallback always works.

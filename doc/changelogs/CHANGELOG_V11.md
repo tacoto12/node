@@ -9,6 +9,7 @@
 </tr>
 <tr>
 <td>
+<a href="#11.6.1">11.6.1</a><br/>
 <a href="#11.6.0">11.6.0</a><br/>
 <a href="#11.5.0">11.5.0</a><br/>
 <a href="#11.4.0">11.4.0</a><br/>
@@ -32,6 +33,245 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
+<a id="11.6.1"></a>
+## 2019-01-17, Version 11.6.1 (Current), @BridgeAR
+
+### Commits
+
+* [00ed77e817] - assert: make `actual` and `expected` getters (Ruben Bridgewater) https://github.com/nodejs/node/pull/25250
+* [516f75fda8] - benchmark: fix net-wrap-js-stream-passthrough (Rich Trott) https://github.com/nodejs/node/pull/25273
+* [6cf49223d1] - buffer: move Buffer prototype wiring into internal/buffer.js (Joyee Cheung) https://github.com/nodejs/node/pull/25292
+* [edd19ce9b6] - buffer: move initialization of buffer prototype into node.js (Joyee Cheung) https://github.com/nodejs/node/pull/25292
+* [8f8c6ba2ad] - buffer: inspect extra properties (Ruben Bridgewater) https://github.com/nodejs/node/pull/25150
+* [fcee45f72d] - buffer: refactor checks for SlowBuffer creation (P. Mike) https://github.com/nodejs/node/pull/25266
+* [7dc4c3be03] - buffer: fix crash for invalid index types (Anna Henningsen) https://github.com/nodejs/node/pull/25154
+* [5a67471c9d] - build: set `-blibpath:` for AIX (Richard Lau) https://github.com/nodejs/node/pull/25447
+* [fcf7e648e5] - build: add check for empty openssl-fips flag (Daniel Bevenius) https://github.com/nodejs/node/pull/25391
+* [ce18bf9466] - build: fix Windows shared lib build (Richard Lau) https://github.com/nodejs/node/pull/25166
+* [155741f067] - build,test: fail `coverage` target if tests fail (Refael Ackermann) https://github.com/nodejs/node/pull/25432
+* [56e7e4f0cd] - child_process: simplify argument handling (cjihrig) https://github.com/nodejs/node/pull/25194
+* [66ea33238e] - console: move the inspector console wrapping in a separate file (Joyee Cheung) https://github.com/nodejs/node/pull/24709
+* [b21f8ba609] - console: split console into global.js and constructor.js (Joyee Cheung) https://github.com/nodejs/node/pull/24709
+* [7ccc01705c] - console: lazy load process.stderr and process.stdout (Joyee Cheung) https://github.com/nodejs/node/pull/24534
+* [7e5e99260e] - console: bind methods from the prototype chain in Console (Joyee Cheung) https://github.com/nodejs/node/pull/24047
+* [bac32a5668] - console: create the global console from Console constructor (Joyee Cheung) https://github.com/nodejs/node/pull/25420
+* [561c2689ef] - console: use spread notation instead of Object.assign (Ruben Bridgewater) https://github.com/nodejs/node/pull/25149
+* [0213d0ac09] - coverage: pass cwd to path.resolve() in setup (cjihrig) https://github.com/nodejs/node/pull/25289
+* [d7534bf7b8] - coverage: use process._rawDebug() during setup (cjihrig) https://github.com/nodejs/node/pull/25289
+* [79b089f2f1] - crypto: fix key object wrapping in sync keygen (Tobias Nießen) https://github.com/nodejs/node/pull/25326
+* [bc6f4bc0c5] - crypto: add crypto/keys to cannotUseCache (Daniel Bevenius) https://github.com/nodejs/node/pull/25237
+* [f3ebc391a3] - crypto: fix zero byte allocation assertion failure (Tobias Nießen) https://github.com/nodejs/node/pull/25248
+* [f0e876f64a] - deps: cherry-pick d9fbfeb from upstream V8 (Alexey Kozyatinskiy) https://github.com/nodejs/node/pull/25331
+* [c56f5aa711] - deps: upgrade npm to v6.5.0 (Jordan Harband) https://github.com/nodejs/node/pull/25234
+* [f2abe7bf76] - deps: V8: backport 3e010af (Ruben Bridgewater) https://github.com/nodejs/node/pull/25101
+* [201cf97fcb] - deps: V8: backport bf84766 (Ruben Bridgewater) https://github.com/nodejs/node/pull/25101
+* [5b4fab1a40] - dns: fix TTL value for AAAA replies to `resolveAny()` (Anna Henningsen) https://github.com/nodejs/node/pull/25187
+* [b5d3618dd4] - doc: revert incorrect change on readable._read (Matteo Collina) https://github.com/nodejs/node/pull/25442
+* [2d4cd8a741] - doc: add TLSSocket.isSessionReused() docs (Sam Roberts) https://github.com/nodejs/node/pull/25423
+* [383b1ac83a] - doc: improve Sign/Verify examples and docs (Sam Roberts) https://github.com/nodejs/node/pull/25452
+* [eb79580f42] - doc: fix section order in vm.md (Vse Mozhet Byt) https://github.com/nodejs/node/pull/25374
+* [dde4f48427] - doc: fix sorting in buffer.md (Vse Mozhet Byt) https://github.com/nodejs/node/pull/25477
+* [75e19032ab] - doc: fix `napi_open_callback_scope` description (Philipp Renoth) https://github.com/nodejs/node/pull/25366
+* [f23b4c3b92] - doc: document that stream.on('close') was changed in Node 10 (Matteo Collina) https://github.com/nodejs/node/pull/25413
+* [60428bddc8] - doc: fix, unify, formalize, and amplify vm.md (Vse Mozhet Byt) https://github.com/nodejs/node/pull/25422
+* [13a38bd14c] - doc: fix the path to postMessage() (Mitar) https://github.com/nodejs/node/pull/25332
+* [f101222233] - doc: update `os.networkInterfaces()` example (jvelezpo) https://github.com/nodejs/node/pull/25417
+* [0d92b0f9d0] - doc: make sure that calls to .read() are looped (Matteo Collina) https://github.com/nodejs/node/pull/25375
+* [4624a5de40] - doc: wrap and punctuate YAML description text (Sam Roberts) https://github.com/nodejs/node/pull/25419
+* [ddaf69c963] - doc: add history to http.request.setTimeout() (James Bunton) https://github.com/nodejs/node/pull/25121
+* [61039b6d7d] - doc: add clarification for exception behaviour (Michael Dawson) https://github.com/nodejs/node/pull/25339
+* [4bc2a4f008] - doc: clarify timing of socket.connecting (Sam Roberts) https://github.com/nodejs/node/pull/25333
+* [cefd802098] - doc: update benchmark doc (Kazushi Kitaya) https://github.com/nodejs/node/pull/25367
+* [bdde476396] - doc: use lowercase for zlib (Rich Trott) https://github.com/nodejs/node/pull/25371
+* [5d1c3e0f8d] - doc: fix heading in cpp style guide (Kazushi Kitaya) https://github.com/nodejs/node/pull/25303
+* [f9349ccf14] - doc: fix process.stdin example (Anna Henningsen) https://github.com/nodejs/node/pull/25344
+* [49ec37197c] - doc: make modules.md more accurate (Vse Mozhet Byt) https://github.com/nodejs/node/pull/25357
+* [b1023bac35] - doc: fs.mkdir('/') throws EPERM on Windows (Corey Farrell) https://github.com/nodejs/node/pull/25340
+* [a989df7fed] - doc: document key encryption options (Tobias Nießen) https://github.com/nodejs/node/pull/23632
+* [ff88d5df77] - doc: simplify DEP0119 wording (cjihrig) https://github.com/nodejs/node/pull/25276
+* [be45469744] - doc: edit and simplify util.inspect() docs (cjihrig) https://github.com/nodejs/node/pull/25195
+* [8a701c3fce] - doc: include license for src/large_pages in LICENSE (Ujjwal Sharma) https://github.com/nodejs/node/pull/25246
+* [e6da77b12c] - doc: describe TLS session resumption (Sam Roberts) https://github.com/nodejs/node/pull/25174
+* [3af173df00] - doc: link and expand --tls-cipher-list docs (Sam Roberts) https://github.com/nodejs/node/pull/25174
+* [39b3fd1b61] - doc: revise "Breaking Changes to Internal Elements" (Rich Trott) https://github.com/nodejs/node/pull/25190
+* [2c50bcda8a] - doc: fix NAPI typo (Philipp Renoth) https://github.com/nodejs/node/pull/25216
+* [483a8b63f3] - doc,worker: revise worker_threads.md (Rich Trott) https://github.com/nodejs/node/pull/25402
+* [5c695cd7a6] - fs: extract start and end check into checkPosition (ZYSzys) https://github.com/nodejs/node/pull/25264
+* [a34251d5c7] - http2: add test case for goaway (Anto Aravinth) https://github.com/nodejs/node/pull/24054
+* [03e31ffa19] - inspector: move process.binding to internalBinding (Beni von Cheni) https://github.com/nodejs/node/pull/24931
+* [07a69499ba] - Revert "inspector: move process.binding to internalBinding" (Joyee Cheung) https://github.com/nodejs/node/pull/25446
+* [de9b56d1f5] - inspector: move process.binding to internalBinding (Beni von Cheni) https://github.com/nodejs/node/pull/24931
+* [f4e18cd31f] - inspector, test: verify reported console message (Eugene Ostroukhov) https://github.com/nodejs/node/pull/25455
+* [27b8585f61] - lib: expose all type checks from the internal types module (Ruben Bridgewater) https://github.com/nodejs/node/pull/25149
+* [68bc42aea8] - lib: remove internalBinding('config').pendingDeprecation (Joyee Cheung) https://github.com/nodejs/node/pull/24962
+* [16c60ce4a1] - lib: remove unused NativeModule/NativeModule wraps (Joyee Cheung) https://github.com/nodejs/node/pull/24904
+* [ca7888dbde] - lib: remove duplicated noop function (ZYSzys) https://github.com/nodejs/node/pull/24770
+* [468ccac88f] - Revert "lib: remove duplicated noop function" (Joyee Cheung) https://github.com/nodejs/node/pull/25446
+* [252716ec71] - Revert "lib: remove unused NativeModule/NativeModule wraps" (Joyee Cheung) https://github.com/nodejs/node/pull/25446
+* [5c73a32fb3] - lib: move lib/console.js to lib/internal/console/constructor.js (Joyee Cheung) https://github.com/nodejs/node/pull/24709
+* [318e810f74] - lib: remove internal `util._extends()` usage (Ruben Bridgewater) https://github.com/nodejs/node/pull/25105
+* [217bb0e5f0] - lib: simplify several debug() calls (cjihrig) https://github.com/nodejs/node/pull/25241
+* [66d82d0fab] - lib,test: remove lib/internal/test/unicode.js (Rich Trott) https://github.com/nodejs/node/pull/25298
+* [c13e5be740] - net: use decodeStrings public API for writable stream (Rich Trott) https://github.com/nodejs/node/pull/25201
+* [9ac8d41925] - net: check for close on stream, not parent (David Halls) https://github.com/nodejs/node/pull/25026
+* [3df825e516] - os: add fallback for undefined CPUs (Minwoo Jung) https://github.com/nodejs/node/pull/25493
+* [173f9d07d5] - os: improve networkInterfaces() performance (Brian White) https://github.com/nodejs/node/pull/25410
+* [f5e715737d] - os: move process.binding('os') to internalBinding (briete) https://github.com/nodejs/node/pull/25087
+* [fd8e02c9f1] - Revert "os: move process.binding('os') to internalBinding" (Joyee Cheung) https://github.com/nodejs/node/pull/25446
+* [1fa971f4f8] - os: move process.binding('os') to internalBinding (briete) https://github.com/nodejs/node/pull/25087
+* [dd84a90362] - process: register the inspector async hooks in bootstrap/node.js (Joyee Cheung) https://github.com/nodejs/node/pull/25443
+* [7186e6d42a] - process: refactor coverage setup during bootstrap (Joyee Cheung) https://github.com/nodejs/node/pull/25398
+* [d2cea723ee] - process: allow StartExecution() to take a main script ID (Joyee Cheung) https://github.com/nodejs/node/pull/25474
+* [0ec70d2140] - process: move C++ process events into node_process_events.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25397
+* [3befd53f06] - process: move --help and --bash-completeion handling to startExecution (Joyee Cheung) https://github.com/nodejs/node/pull/25262
+* [aa186d15ef] - process: move process.features initialization into node.js (Joyee Cheung) https://github.com/nodejs/node/pull/25239
+* [0c14bc1545] - process: make tick callback and promise rejection callback more robust (Joyee Cheung) https://github.com/nodejs/node/pull/25200
+* [3e6d1c2759] - process: move worker bootstrap code into worker_thread_only.js (Joyee Cheung) https://github.com/nodejs/node/pull/25199
+* [84b95ff754] - process: split worker IO into internal/worker/io.js (Joyee Cheung) https://github.com/nodejs/node/pull/25199
+* [c51670df99] - process: move eval and exception bootstrap ito process/execution.js (Joyee Cheung) https://github.com/nodejs/node/pull/25199
+* [59997e0abf] - process: make internal/queue_microtask.js more self-contained (Joyee Cheung) https://github.com/nodejs/node/pull/25189
+* [32fcc6e9e9] - process: move child process IPC setup condition into node.js (Joyee Cheung) https://github.com/nodejs/node/pull/25130
+* [39ff53ab29] - process: move POSIX credential accessors into node_credentials.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25066
+* [da8ec3d106] - process: specialize building and storage of process.config (Joyee Cheung) https://github.com/nodejs/node/pull/24816
+* [5abc39d397] - process: provide dummy stdio for non-console Windows apps (Anna Henningsen) https://github.com/nodejs/node/pull/20640
+* [e28def96c6] - repl: indicate if errors are thrown or not (Ruben Bridgewater) https://github.com/nodejs/node/pull/25253
+* [b9f97067d7] - src: declare process-related C++ methods in node_process.h (Joyee Cheung) https://github.com/nodejs/node/pull/25397
+* [233026ac3e] - src: move process object creation into node_process_object.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25397
+* [97d10440e8] - src: clean up `node::Init()` wrt embedder scenarios (Anna Henningsen) https://github.com/nodejs/node/pull/25370
+* [b016fd9a6a] - src: move InternalMakeCallback and MakeCallback (Joyee Cheung) https://github.com/nodejs/node/pull/25299
+* [7bb31bd956] - src: remove unused isolate variable (Daniel Bevenius) https://github.com/nodejs/node/pull/25368
+* [81aae04896] - src: use generic helper for splitting strings (Anna Henningsen) https://github.com/nodejs/node/pull/25363
+* [e0d2fb365b] - src: split `LoadEnvironment()` at `startExecution()` (Anna Henningsen) https://github.com/nodejs/node/pull/25320
+* [253ef353df] - src: move per-process global variables into node::per_process (Joyee Cheung) https://github.com/nodejs/node/pull/25302
+* [2217fe3956] - src: use `internalBinding('config').hasInspector` in JS land (Joyee Cheung) https://github.com/nodejs/node/pull/25291
+* [082f83ddde] - src: refactor tickInfo access (Joyee Cheung) https://github.com/nodejs/node/pull/25200
+* [45f906a5a0] - src: move process.nextTick and promise setup into node_task_queue.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25163
+* [a9ea811a64] - src: move symbols binding into node_symbols.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25163
+* [6847969354] - src: move node::errno_string into node_errors.h/cc (Joyee Cheung) https://github.com/nodejs/node/pull/25396
+* [4e702e5a6a] - src: fix compiler warnings (cjihrig) https://github.com/nodejs/node/pull/25165
+* [940eb8b0b7] - src: move more process methods initialization in bootstrap/node.js (Joyee Cheung) https://github.com/nodejs/node/pull/25127
+* [2a021203d4] - src: dispose of V8 platform in `process.exit()` (Anna Henningsen) https://github.com/nodejs/node/pull/25061
+* [3d4fe73406] - src: move arch, platform and release into node_metadata.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25293
+* [0455718ad3] - src: simplify JS Array creation (Anna Henningsen) https://github.com/nodejs/node/pull/25288
+* [930de5bc65] - src: initialize ICU version in per_process::metadata.versions (Joyee Cheung) https://github.com/nodejs/node/pull/25115
+* [c84f01952a] - src: move the declaration of http parser versions into node_metadata.h (Joyee Cheung) https://github.com/nodejs/node/pull/25115
+* [7926159c80] - src: move GetOpenSSLVersion into node_metadata.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25115
+* [e678f4e04b] - src: pass isMainThread into bootstrap/node.js directly (Joyee Cheung) https://github.com/nodejs/node/pull/25017
+* [58642990e9] - src: always compile and store code cache for native modules (Joyee Cheung) https://github.com/nodejs/node/pull/24950
+* [89175e797a] - src: remove code cache integrity check (Joyee Cheung) https://github.com/nodejs/node/pull/24950
+* [d967e8626f] - src: use NativeModuleLoader to compile all the bootstrappers (Joyee Cheung) https://github.com/nodejs/node/pull/24775
+* [197eaac4a1] - src: initialize `Environment` members in class definition (Anna Henningsen) https://github.com/nodejs/node/pull/25369
+* [22973432af] - src: check curve ID existence instead of asn flags (Sam Roberts) https://github.com/nodejs/node/pull/25345
+* [939f4adb17] - src: trace_events: fix race with metadata events (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/25235
+* [c79cd8d9fa] - src: remove unused method declaration (Ben Noordhuis) https://github.com/nodejs/node/pull/25329
+* [448c9c653f] - src: improve ToV8Value() functions (Anna Henningsen) https://github.com/nodejs/node/pull/25288
+* [1f1d731200] - src: add NAPI_VERSION_EXPERIMENTAL (Michael Dawson) https://github.com/nodejs/node/pull/25319
+* [d7186252df] - src: unload addons when environment quits (Gabriel Schulhof) https://github.com/nodejs/node/pull/24861
+* [f62e35fd05] - src: fix warning in cares_wrap.cc (cjihrig) https://github.com/nodejs/node/pull/25230
+* [2f5c8b5041] - src: remove unused variable from string_search.h (Anna Henningsen) https://github.com/nodejs/node/pull/25139
+* [e00b326f33] - src: pass along MaybeLocal<> state from `URL::ToObject()` (Anna Henningsen) https://github.com/nodejs/node/pull/25141
+* [ae86192732] - src: ignore termination exceptions in fatal TryCatch (Anna Henningsen) https://github.com/nodejs/node/pull/25141
+* [c9d49d65a4] - src: fulfill Maybe contract in InlineDecoder (Anna Henningsen) https://github.com/nodejs/node/pull/25140
+* [dd6667d05e] - src: lazily load internalBinding('uv') and build the errmap lazily (Joyee Cheung) https://github.com/nodejs/node/pull/25143
+* [bc66356093] - src: use consistent names for JSStream (Sam Roberts) https://github.com/nodejs/node/pull/25153
+* [99a5af65df] - src: introduce DCHECK macro (cjihrig) https://github.com/nodejs/node/pull/25207
+* [e2a01ca061] - src: use DCHECK_* macros where possible (cjihrig) https://github.com/nodejs/node/pull/25207
+* [73ccfc81c9] - src: fix compiler warnings in node_crypto.cc (cjihrig) https://github.com/nodejs/node/pull/25205
+* [7365b00929] - src: do not leak NodeTraceStateObserver (Anna Henningsen) https://github.com/nodejs/node/pull/25180
+* [9ca22378c3] - src,lib: prefer internal/options over process._foo (Anna Henningsen) https://github.com/nodejs/node/pull/25063
+* [dc7c05d592] - src,lib: make process.binding('config') internal (Masashi Hirano) https://github.com/nodejs/node/pull/23400
+* [55d4d132db] - Revert "src,lib: make process.binding('config') internal" (Joyee Cheung) https://github.com/nodejs/node/pull/25446
+* [5be6ce0ae2] - test: improve known_issues/test-vm-timeout-escape-queuemicrotask (Rich Trott) https://github.com/nodejs/node/pull/25503
+* [a4b3a08762] - test: add test for fs.lchmod (ZYSzys) https://github.com/nodejs/node/pull/25439
+* [c648bb68f5] - test: make test-v8-coverage.js more strict (cjihrig) https://github.com/nodejs/node/pull/25289
+* [f8d433fd4b] - test: rework ephemeralkeyinfo to run in parallel (Sam Roberts) https://github.com/nodejs/node/pull/25409
+* [c3b9149b01] - test: check for tls renegotiation errors (Sam Roberts) https://github.com/nodejs/node/pull/25437
+* [9bde116295] - test: fix test-net-connect-econnrefused (again) (Rich Trott) https://github.com/nodejs/node/pull/25438
+* [e5f88f54aa] - test: remove unnecessary skipIfWorker() (Rich Trott) https://github.com/nodejs/node/pull/25427
+* [d5fcb0fb9e] - test: fix module loading error for AIX 7.1 (Richard Lau) https://github.com/nodejs/node/pull/25418
+* [01d4be9b7b] - test: improve test coverage of native crypto code (Tobias Nießen) https://github.com/nodejs/node/pull/25400
+* [b76c968759] - test: move require('https') to after crypto check (Daniel Bevenius) https://github.com/nodejs/node/pull/25388
+* [d5c41daefc] - test: fix test-net-connect-econnrefused (Rich Trott) https://github.com/nodejs/node/pull/25389
+* [3dd34fa9a0] - test: remove test/pummel/test-http-client-reconnect-bug.js (Rich Trott) https://github.com/nodejs/node/pull/25387
+* [7660d1067a] - test: remove duplicate encoding tests in favor of WPT (Joyee Cheung) https://github.com/nodejs/node/pull/25321
+* [ddd1f5cad3] - test: use WPT runner to run encoding tests (Joyee Cheung) https://github.com/nodejs/node/pull/25321
+* [1e20303f33] - test: support more icu requirements in the WPT status file (Joyee Cheung) https://github.com/nodejs/node/pull/25321
+* [cffffa4ae6] - test: pull enconding WPT test fixtures (Joyee Cheung) https://github.com/nodejs/node/pull/25321
+* [43616b2ec3] - test: refactor test-fs-watch-non-recursive (Rich Trott) https://github.com/nodejs/node/pull/25386
+* [6cc9885a71] - test: fix test/pummel/test-fs-watch-non-recursive.js (Rich Trott) https://github.com/nodejs/node/pull/25386
+* [b19ab56ee6] - test: fix test/pummel/test-fs-watch-file.js (Rich Trott) https://github.com/nodejs/node/pull/25384
+* [056bc62aa5] - test: set umask for tests (Rich Trott) https://github.com/nodejs/node/pull/25229
+* [aa66a3e7d6] - test: fix failing assertion (Ruben Bridgewater) https://github.com/nodejs/node/pull/25250
+* [5494891902] - test: refactor `common.expectWarning()` (Ruben Bridgewater) https://github.com/nodejs/node/pull/25251
+* [e63e2dc00b] - test: fix test/pummel/test-fs-largefile.js (Rich Trott) https://github.com/nodejs/node/pull/25372
+* [75efebbf2c] - test: more tests for internal/util/types (ZYSzys) https://github.com/nodejs/node/pull/25225
+* [e76b4b08b9] - test: clean up wasm fixtures (Gus Caplan) https://github.com/nodejs/node/pull/25360
+* [049b8b216c] - test: tune test-uv-threadpool-schedule (Rich Trott) https://github.com/nodejs/node/pull/25358
+* [4d0d84e655] - test: remove redundant fchmod test (ZYSzys) https://github.com/nodejs/node/pull/25282
+* [f8f752478d] - test: move test-tls-securepair-client out of pummel (Rich Trott) https://github.com/nodejs/node/pull/25222
+* [27b23c4d03] - test: fix test-tls-securepair-client (Rich Trott) https://github.com/nodejs/node/pull/25222
+* [890c7b69f1] - test: http2 origin length ERR_HTTP2_ORIGIN_LENGTH (Furqan Shaikh) https://github.com/nodejs/node/pull/25296
+* [fb6d015ebf] - test: remove flag for test-addon-uv-handle-leak (Rich Trott) https://github.com/nodejs/node/pull/25327
+* [e32aacc3af] - test: fix test-benchmark-zlib (Rich Trott) https://github.com/nodejs/node/pull/25365
+* [75b7c45395] - test: replace internals with public API (Rich Trott) https://github.com/nodejs/node/pull/25309
+* [71c7c26c99] - test: set umask explicitly (Thomas Chung) https://github.com/nodejs/node/pull/25213
+* [d85642b3f3] - test: make sure tmpdir is created before using it (Joyee Cheung) https://github.com/nodejs/node/pull/25224
+* [0ba55084d4] - test: remove unused --expose-native-as V8 flag (peterwmwong) https://github.com/nodejs/node/pull/25275
+* [477185ccc4] - test: mark test-util-callbackify flaky on AIX (Rich Trott) https://github.com/nodejs/node/pull/25284
+* [539315180e] - test: remove unnecessary test flags (cjihrig) https://github.com/nodejs/node/pull/25277
+* [4ca4b546ab] - test: remove `util.inherits()` usage (ZYSzys) https://github.com/nodejs/node/pull/25245
+* [11c9a82f0f] - test: slightly refactor test-child-process-execsync (Denys Otrishko) https://github.com/nodejs/node/pull/25227
+* [05d1a536cc] - test: remove try/catch in common.isMainThread (Rich Trott) https://github.com/nodejs/node/pull/25249
+* [b0b1414ad7] - test: regression test for uv threadpool congestion (Gireesh Punathil) https://github.com/nodejs/node/pull/23099
+* [c7d2dbd5da] - test: add TODO to encoding tests that can be replaced with WPT (Joyee Cheung) https://github.com/nodejs/node/pull/25155
+* [b45be671db] - test: rename custom encoding tests that cannot be replaced by WPT (Joyee Cheung) https://github.com/nodejs/node/pull/25155
+* [be421823e5] - test: split encoding tests where some cases can be run without ICU (Joyee Cheung) https://github.com/nodejs/node/pull/25155
+* [deceb26238] - test: split test-whatwg-encoding-textdecoder-fatal.js (Joyee Cheung) https://github.com/nodejs/node/pull/25155
+* [a8f5191eb9] - test: split test-whatwg-encoding-textdecoder.js (Joyee Cheung) https://github.com/nodejs/node/pull/25155
+* [7e2ae75a6b] - test: mark two tests as flaky in AIX (Gireesh Punathil) https://github.com/nodejs/node/pull/25126
+* [e182ca9bdc] - test: add more inspect subclassing tests (Ruben Bridgewater) https://github.com/nodejs/node/pull/25192
+* [58af085d9f] - test: refactor stdio handling in test-esm-cjs-main (Richard Lau) https://github.com/nodejs/node/pull/25169
+* [91d1aea311] - test: refactor test-esm-namespace.mjs (Rich Trott) https://github.com/nodejs/node/pull/25117
+* [b7b1d7eb88] - test: fix test-repl-envvars (Anna Henningsen) https://github.com/nodejs/node/pull/25226
+* [95353c7c20] - test,doc: add tests and docs for addon unloading (Anna Henningsen) https://github.com/nodejs/node/pull/24861
+* [e12d05635c] - test,worker: simplify common.isMainThread (Rich Trott) https://github.com/nodejs/node/pull/25426
+* [8532e48f00] - test,worker: refactor test-worker-cleanup-handles (Rich Trott) https://github.com/nodejs/node/pull/25401
+* [48e5a1ef10] - tls: do not confuse TLSSocket and Socket (Sam Roberts) https://github.com/nodejs/node/pull/25153
+* [f6b2ea8bb9] - tls: do not confuse session and session ID (Sam Roberts) https://github.com/nodejs/node/pull/25153
+* [d5ba121e74] - tls: fix initRead socket argument name (Sam Roberts) https://github.com/nodejs/node/pull/25153
+* [acf7802fe3] - tls: remove unused ocsp extension parsing (Sam Roberts) https://github.com/nodejs/node/pull/25153
+* [dff90bcf19] - tools: lint for use of internalBinding() (cjihrig) https://github.com/nodejs/node/pull/25395
+* [bf66935361] - tools: update crypo check rule (cjihrig) https://github.com/nodejs/node/pull/25399
+* [7f7f624579] - tools: add openssl-cli to macos-firewall.sh (Daniel Bevenius) https://github.com/nodejs/node/pull/25385
+* [d378e6b4d0] - tools: update ESLint to 5.12.0 (cjihrig) https://github.com/nodejs/node/pull/25347
+* [1be566bd2f] - tools: replace NULL with nullptr (Juan José Arboleda) https://github.com/nodejs/node/pull/25179
+* [fee8a11634] - tools: remove custom buffer-constructor lint rule (cjihrig) https://github.com/nodejs/node/pull/25261
+* [ee43540aa7] - tools: enable no-buffer-constructor lint rule (cjihrig) https://github.com/nodejs/node/pull/25261
+* [e6b5232381] - tools: enable no-useless-catch lint rule (cjihrig) https://github.com/nodejs/node/pull/25236
+* [f944a75336] - tools: update ESLint to 5.11.1 (cjihrig) https://github.com/nodejs/node/pull/25236
+* [9a55bc8837] - trace_events: move SetupTraceCategoryState into node_trace_events.cc (Joyee Cheung) https://github.com/nodejs/node/pull/25128
+* [613d2b3fd6] - url: return backslashes from fileURLToPath on win (Kevin Smith) https://github.com/nodejs/node/pull/25349
+* [84666a084c] - util: fixes type in argument type validation error (Ankur Oberoi) https://github.com/nodejs/node/pull/25103
+* [6c9fd7134c] - util: remove eslint comments and rename variables (Ruben Bridgewater) https://github.com/nodejs/node/pull/25255
+* [e913996ea6] - util: remove outdated comment (Ruben Bridgewater) https://github.com/nodejs/node/pull/25255
+* [57ae88bf64] - util: simpler module namespace code (Ruben Bridgewater) https://github.com/nodejs/node/pull/25255
+* [5db3228558] - util: code cleanup (Ruben Bridgewater) https://github.com/nodejs/node/pull/25255
+* [c7cffca3c6] - util: switch recurseTimes counter (Ruben Bridgewater) https://github.com/nodejs/node/pull/25255
+* [7dab90819e] - util: add null prototype support for date (Anto Aravinth) https://github.com/nodejs/node/pull/25144
+* [e1e46cec04] - util: update comment in util.promisify (Kazushi Kitaya) https://github.com/nodejs/node/pull/25323
+* [37976251b5] - util: fix util.inspect with proxied function (Weijia Wang) https://github.com/nodejs/node/pull/25244
+* [88e73862ca] - util: simplify code (Kazushi Kitaya) https://github.com/nodejs/node/pull/25162
+* [73f3a1c4e6] - util: make inspect aware of RegExp subclasses and null prototype (Ruben Bridgewater) https://github.com/nodejs/node/pull/25192
+* [61eb601bae] - v8: enable inline WASM in serialization API (Anna Henningsen) https://github.com/nodejs/node/pull/25313
+* [2df0d14e18] - win, build: fix building addons on Windows (Bartosz Sosnowski) https://github.com/nodejs/node/pull/25108
+* [36b1e7ae66] - worker: remove `--experimental-worker` flag (Anna Henningsen) https://github.com/nodejs/node/pull/25361
+* [43fb250201] - worker: improve JS-side debugging (Anna Henningsen) https://github.com/nodejs/node/pull/25312
+* [fe10881b7c] - worker: partially remove `--experimental-worker` flag (Anna Henningsen) https://github.com/nodejs/node/pull/25404
+* [641cd94a71] - worker: set `--experimental-worker` always (Anna Henningsen) https://github.com/nodejs/node/pull/25404
+* [9932693d2a] - worker: enable transferring WASM modules (Anna Henningsen) https://github.com/nodejs/node/pull/25314
+* [418bff175e] - worker: use engine-provided deleter for `SharedArrayBuffer`s (Anna Henningsen) https://github.com/nodejs/node/pull/25307
+* [e534dcd75e] - zlib: split JS code as prep for non-zlib-backed streams (Anna Henningsen) https://github.com/nodejs/node/pull/24939
 
 <a id="11.6.0"></a>
 ## 2018-12-26, Version 11.6.0 (Current), @MylesBorins

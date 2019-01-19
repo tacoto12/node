@@ -162,8 +162,8 @@ may lie about what terminal is used.
 To enforce a specific behavior without relying on `process.env` it is possible
 to pass in an object with different settings.
 
-Use the `NODE_DISABLE_COLORS` environment variable to enforce this function to
-always return 1.
+Set the `NODE_DISABLE_COLORS` environment variable to `1` to enforce this
+function to always return 1.
 
 ### writeStream.getWindowSize()
 <!-- YAML

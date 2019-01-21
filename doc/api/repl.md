@@ -30,7 +30,8 @@ customizable evaluation functions.
 The following special commands are supported by all REPL instances:
 
 * `.clear` - Resets the REPL `context` to an empty object and clears any
-  multi-line expression currently being input.
+  multi-line expression currently being input if the `repl.REPLServer` instance
+  was created with the `useGlobal` option set to `false`.
 * `.exit` - Close the I/O stream, causing the REPL to exit.
 * `.help` - Show this list of special commands.
 * `.save` - Save the current REPL session to a file:

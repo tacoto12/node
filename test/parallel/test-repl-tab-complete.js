@@ -387,8 +387,8 @@ testMe.complete('var log = console.lo', common.mustCall((error, data) => {
 // tab completion for defined commands
 putIn.run(['.clear']);
 
-testMe.complete('.b', common.mustCall((error, data) => {
-  assert.deepStrictEqual(data, [['break'], 'b']);
+testMe.complete('.h', common.mustCall((error, data) => {
+  assert.deepStrictEqual(data, [['help'], 'h']);
 }));
 putIn.run(['.clear']);
 putIn.run(['var obj = {"hello, world!": "some string", "key": 123}']);

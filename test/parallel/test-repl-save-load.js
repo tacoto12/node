@@ -36,7 +36,6 @@ const works = [['inner.one'], 'inner.o'];
 const putIn = new ArrayStream();
 const testMe = repl.start('', putIn);
 
-
 const testFile = [
   'var top = function() {',
   'var inner = {one:1};'
@@ -61,7 +60,7 @@ assert.strictEqual(fs.readFileSync(saveFileName, 'utf8'),
     '}'
   ];
   const putIn = new ArrayStream();
-  const replServer = repl.start('', putIn);
+  const replServer = repl.start({ terminal: true, stream: putIn });
 
   putIn.run(['.editor']);
   putIn.run(cmds);
@@ -70,7 +69,7 @@ assert.strictEqual(fs.readFileSync(saveFileName, 'utf8'),
   putIn.run([`.save ${saveFileName}`]);
   replServer.close();
   assert.strictEqual(fs.readFileSync(saveFileName, 'utf8'),
-                     `${cmds.join('\n')}\n`);
+                     `${cmds.join('\n')}\n\n`);
 }
 
 // make sure that the REPL data is "correct"

@@ -51,7 +51,7 @@ async function runReplTests(socket, prompt, tests) {
     // expect can be a single line or multiple lines
     const expectedLines = Array.isArray(expect) ? expect : [ expect ];
 
-    console.error('out:', JSON.stringify(send));
+    console.error('send: %j', send);
     socket.write(`${send}\n`);
 
     for (let expectedLine of expectedLines) {
@@ -84,7 +84,7 @@ async function runReplTests(socket, prompt, tests) {
       while (actualLine.startsWith(prompt))
         actualLine = actualLine.substr(prompt.length);
 
-      console.error('in:', JSON.stringify(actualLine));
+      console.error('expect: %j', expect);
 
       // Match a string directly, or a RegExp through .test().
       if (typeof expectedLine === 'string') {
@@ -145,9 +145,9 @@ const errorTests = [
     send: 'function test_func() {',
     expect: '... '
   },
-  // You can recover with the .break command
+  // You can recover with the .clear command
   {
-    send: '.break',
+    send: '.clear',
     expect: ''
   },
   // But passing the same string to eval() should throw
@@ -162,7 +162,7 @@ const errorTests = [
   },
   // Special REPL commands still available
   {
-    send: '.break',
+    send: '.clear',
     expect: ''
   },
   // Template expressions
@@ -415,7 +415,7 @@ const errorTests = [
   // This test is to make sure that we properly remove the whitespace
   // characters at the end of line, unlike the buggy `trimWhitespace` function
   {
-    send: '  \t    .break  \t  ',
+    send: '  \t    .clear  \t  ',
     expect: ''
   },
   // Multiline strings preserve whitespace characters in them
@@ -430,20 +430,20 @@ const errorTests = [
   },
   // using REPL commands within a string literal should still work
   {
-    send: '\'\\\n.break',
+    send: '\'\\\n.clear',
     expect: '... ' + prompt_unix
   },
   // Using REPL command "help" within a string literal should still work
   {
     send: '\'thefourth\\\n.help\neye\'',
     expect: [
-      /\.break/,
       /\.clear/,
-      /\.editor/,
       /\.exit/,
       /\.help/,
       /\.load/,
       /\.save/,
+      '',
+      'Press ^C to abort current expression, ^D to exit the repl',
       /'thefourtheye'/
     ]
   },
@@ -675,7 +675,7 @@ const errorTests = [
   },
   // bring back the repl to prompt
   {
-    send: '.break',
+    send: '.clear',
     expect: ''
   },
   {

@@ -45,17 +45,17 @@ function nextdir() {
 assert.strictEqual(Object.keys(fs).includes('promises'), false);
 
 {
-  access(__filename, 'r')
+  access(__filename, 0)
     .then(common.mustCall());
 
-  access('this file does not exist', 'r')
-    .then(common.mustNotCall())
-    .catch(common.expectsError({
+  assert.rejects(
+    access('this file does not exist', 0),
+    {
       code: 'ENOENT',
-      type: Error,
-      message:
-        /^ENOENT: no such file or directory, access/
-    }));
+      name: 'Error',
+      message: /^ENOENT: no such file or directory, access/
+    }
+  );
 }
 
 function verifyStatObject(stat) {
@@ -66,7 +66,7 @@ function verifyStatObject(stat) {
 
 async function getHandle(dest) {
   await copyFile(fixtures.path('baz.js'), dest);
-  await access(dest, 'r');
+  await access(dest);
 
   return open(dest, 'r+');
 }

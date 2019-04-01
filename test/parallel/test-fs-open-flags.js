@@ -84,11 +84,6 @@ common.expectsError(
   { code: 'ERR_INVALID_OPT_VALUE', type: TypeError }
 );
 
-common.expectsError(
-  () => stringToFlags(null),
-  { code: 'ERR_INVALID_OPT_VALUE', type: TypeError }
-);
-
 if (common.isLinux || common.isOSX) {
   const tmpdir = require('../common/tmpdir');
   tmpdir.refresh();

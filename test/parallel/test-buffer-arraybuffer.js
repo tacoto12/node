@@ -149,4 +149,7 @@ assert.throws(function() {
 }
 
 // Test an array like entry with the length set to NaN.
-assert.deepStrictEqual(Buffer.from({ length: NaN }), Buffer.alloc(0));
+assert.throws(
+  () => Buffer.from({ length: NaN }),
+  { code: 'ERR_INVALID_ARG_TYPE' }
+);

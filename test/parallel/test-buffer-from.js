@@ -28,7 +28,6 @@ class MyBadPrimitive {
 
 deepStrictEqual(Buffer.from(new String(checkString)), check);
 deepStrictEqual(Buffer.from(new MyString()), check);
-deepStrictEqual(Buffer.from(new MyPrimitive()), check);
 deepStrictEqual(
   Buffer.from(runInNewContext('new String(checkString)', { checkString })),
   check
@@ -42,7 +41,8 @@ deepStrictEqual(
   [{ valueOf: null }, 'object'],
   [Object.create(null), 'object'],
   [new Number(true), 'number'],
-  [new MyBadPrimitive(), 'number'],
+  [new MyBadPrimitive(), 'object'],
+  [new MyPrimitive(), 'object'],
   [Symbol(), 'symbol'],
   [5n, 'bigint'],
   [(one, two, three) => {}, 'function'],

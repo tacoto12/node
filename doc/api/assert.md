@@ -132,7 +132,8 @@ Please note that this will also deactivate the colors in the REPL.
 
 When accessing `assert` directly instead of using the `strict` property, the
 [Abstract Equality Comparison][] will be used for any function without "strict"
-in its name, such as [`assert.deepEqual()`][].
+in its name, such as [`assert.deepEqual()`][]. For details, check the function
+description.
 
 It can be accessed using:
 
@@ -566,7 +567,8 @@ An alias of [`assert.strictEqual()`][].
 > Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters
-using the [Abstract Equality Comparison][] ( `==` ).
+using the [Abstract Equality Comparison][] ( `==` ) for primitive values and
+reference equality for objects.
 
 ```js
 const assert = require('assert');
@@ -577,9 +579,14 @@ assert.equal(1, '1');
 // OK, 1 == '1'
 
 assert.equal(1, 2);
-// AssertionError: 1 == 2
+// AssertionError [ERR_ASSERTION]: Expected values to be loosely equal:
+// 1 should equal 2
 assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
-// AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
+// AssertionError [ERR_ASSERTION]: Expected values to be loosely equal:
+// { a: { b: 1 } } should equal { a: { b: 1 } }
+assert.equal(0, []);
+// AssertionError [ERR_ASSERTION]: Expected values to be loosely equal:
+// 0 should equal []
 ```
 
 If the values are not equal, an `AssertionError` is thrown with a `message`
@@ -859,7 +866,7 @@ An alias of [`assert.notStrictEqual()`][].
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison][]
-( `!=` ).
+( `!=` ) for primitive values and reference equality for objects.
 
 ```js
 const assert = require('assert');
@@ -868,10 +875,11 @@ assert.notEqual(1, 2);
 // OK
 
 assert.notEqual(1, 1);
-// AssertionError: 1 != 1
-
+// AssertionError [ERR_ASSERTION]: Expected "actual" to be loosely unequal to:
+// 1
 assert.notEqual(1, '1');
-// AssertionError: 1 != '1'
+// AssertionError [ERR_ASSERTION]: Expected "actual" to be loosely unequal to:
+// 1
 ```
 
 If the values are equal, an `AssertionError` is thrown with a `message` property
